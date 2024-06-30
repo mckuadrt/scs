@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCS [School Character System]</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+    <script>
+        function redirectAndRefresh() {
+            document.getElementById("redirectIframe").src = "https://bit.ly/scslinks";
+        }
+
+        function enterFullscreen() {
+            const iframe = document.getElementById("redirectIframe");
+            if (iframe.requestFullscreen) {
+                iframe.requestFullscreen();
+            } else if (iframe.mozRequestFullScreen) { // Firefox
+                iframe.mozRequestFullScreen();
+            } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari, and Opera
+                iframe.webkitRequestFullscreen();
+            } else if (iframe.msRequestFullscreen) { // IE/Edge
+                iframe.msRequestFullscreen();
+            }
+        }
+
+        window.onload = function() {
+            redirectAndRefresh();
+            enterFullscreen();
+            setInterval(function() {
+                redirectAndRefresh();
+            }, 1800000);
+        };
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'F11') {
+                enterFullscreen();
+            }
+        });
+    </script>
+</head>
+<body>
+    <iframe id="redirectIframe" src="about:blank"></iframe>
+</body>
+</html>
